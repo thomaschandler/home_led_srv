@@ -11,7 +11,7 @@ import (
 func hc_main(writeChannel chan []byte) {
     // create an accessory
     info := accessory.Info{Name: "LED strip"}
-    ac := accessory.NewSwitch(info)
+    ac := accessory.NewLightbulb(info)
     
     // configure the ip transport
     config := hc.Config{Pin: "00102003"}
@@ -24,7 +24,7 @@ func hc_main(writeChannel chan []byte) {
         <-t.Stop()
     })
 
-		ac.Switch.On.OnValueRemoteUpdate(func(on bool) {
+		ac.Lightbulb.On.OnValueRemoteUpdate(func(on bool) {
 		    if on == true {
 		        log.Println("Switch is on")
 						LedsOn(writeChannel);
@@ -32,6 +32,10 @@ func hc_main(writeChannel chan []byte) {
 		        log.Println("Switch is off")
 						LedsOff(writeChannel);
 		    }
+		})
+
+		ac.Lightbulb.Hue.OnValueRemoteUpdate(func(hue float64) {
+			log.Println("Hue %q", hue)
 		})
  
     t.Start()
