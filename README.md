@@ -15,5 +15,7 @@ name at compile stage
 
 ```
 go get github.com/tarm/serial
+go get github.com/brutella/hc
+go get github.com/brutella/hc/accessory
 ```
 
