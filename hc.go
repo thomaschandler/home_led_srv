@@ -8,7 +8,7 @@ import (
   "github.com/brutella/hc/accessory"
 )
 
-func hc_main() {
+func hc_main(writeChannel chan []byte) {
     // create an accessory
     info := accessory.Info{Name: "LED strip"}
     ac := accessory.NewSwitch(info)
@@ -27,10 +27,10 @@ func hc_main() {
 		ac.Switch.On.OnValueRemoteUpdate(func(on bool) {
 		    if on == true {
 		        log.Println("Switch is on")
-						LedsOn();
+						LedsOn(writeChannel);
 		    } else {
 		        log.Println("Switch is off")
-						LedsOff();
+						LedsOff(writeChannel);
 		    }
 		})
  

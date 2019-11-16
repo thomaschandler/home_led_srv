@@ -5,5 +5,9 @@ import "fmt"
 
 func main() {
   fmt.Println("Hello, world.")
-  hc_main()
+  writeChannel, err := serial_init()
+  if err != nil {
+
+  }
+  hc_main(writeChannel)
 }
