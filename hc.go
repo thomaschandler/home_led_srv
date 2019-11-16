@@ -34,6 +34,11 @@ func hc_main(writeChannel chan []byte) {
 		    }
 		})
 
+		ac.Lightbulb.Brightness.OnValueRemoteUpdate(func(brightness int) {
+			log.Println("Brightness %q", brightness)
+			LedsSetBrightness(writeChannel, uint32(brightness))
+		})
+
 		ac.Lightbulb.Hue.OnValueRemoteUpdate(func(hue float64) {
 			log.Println("Hue %q", hue)
 		})

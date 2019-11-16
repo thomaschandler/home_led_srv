@@ -8,6 +8,16 @@ func LedsOff(writeChannel chan []byte) {
   writeChannel <- data
 }
 
+func LedsSetBrightness(writeChannel chan []byte, brightness uint32) {
+  // TODO: Check brightness bounds here. Not essential as arduino impls
+  gs :=	&GlobalState{ Brightness: brightness }
+  data, err := encodeGlobalState(gs)
+	if err != nil {
+
+	}
+  writeChannel <- data
+}
+
 func LedsOn(writeChannel chan []byte) {
   // 45 LEDs. Go Blue
   leds :=	[]*LedState{ }

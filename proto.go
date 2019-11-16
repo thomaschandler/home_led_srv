@@ -21,3 +21,14 @@ func encode(leds []*LedState) ([]byte, error) {
 		log.Print("control msg: %q", data)
 	return data, nil
 }
+
+// TODO: Proper casing on func names
+func encodeGlobalState(gs *GlobalState) ([]byte, error) {
+		control := &ControlMessage{ GlobalState: gs }
+		data, err := proto.Marshal(control)
+		if err != nil {
+			log.Fatal("marshaling error: ", err)
+		}
+		log.Print("gs control msg: %q", data)
+	return data, nil
+}
