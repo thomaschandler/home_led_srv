@@ -5,6 +5,9 @@ import "fmt"
 
 func main() {
   fmt.Println("Hello, world.")
-  encode()
-  //serial_write()
+  data, err := encode()
+	if err != nil {
+
+	}
+  serial_write(data)
 }

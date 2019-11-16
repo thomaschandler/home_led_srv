@@ -7,7 +7,7 @@ import (
 )
 
 // https://godoc.org/github.com/tarm/serial
-func serial_main() {
+func serial_write(data []byte) {
         c := &serial.Config{Name: "/dev/cu.usbmodem142101", Baud: 115200}
         s, err := serial.OpenPort(c)
         if err != nil {
@@ -25,7 +25,7 @@ func serial_main() {
       }
       log.Print("%q", buf[:n])
 
-       n, err = s.Write([]byte("\x12\x1e\x0a\x03\x08\xff\x01\x0a\x04\x08\x80\x80\x02\x0a\x05\x08\x80\x80\xfc\x07\x0a\x05\x08\x80\x81\x80\x04\x0a\x03\x08\xff\x01"))
+       n, err = s.Write(data)
         if err != nil {
               log.Fatal(err)
         }
