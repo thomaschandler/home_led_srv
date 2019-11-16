@@ -8,7 +8,7 @@ import (
 
 // TODO: Fix naming/spacing
 func serial_init() (chan []byte, error) {
-        c := &serial.Config{Name: "/dev/cu.usbmodem142101", Baud: 115200}
+        c := &serial.Config{Name: "/dev/ttyACM0", Baud: 115200}
         s, err := serial.OpenPort(c)
         if err != nil {
               log.Fatal(err)
