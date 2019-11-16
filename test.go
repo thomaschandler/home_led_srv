@@ -9,31 +9,11 @@ func LedsOff(writeChannel chan []byte) {
 }
 
 func LedsOn(writeChannel chan []byte) {
-  leds :=	[]*LedState{ &LedState{ Color: Color_PURPLE },
-			&LedState{ Color: Color_PURPLE },
-			&LedState{ Color: Color_PURPLE },
-			&LedState{ Color: Color_PURPLE },
-			&LedState{ Color: Color_PURPLE },
-			&LedState{ Color: Color_PURPLE },
-			&LedState{ Color: Color_PURPLE },
-			&LedState{ Color: Color_PURPLE },
-			&LedState{ Color: Color_PURPLE },
-			&LedState{ Color: Color_PURPLE },
-			&LedState{ Color: Color_PURPLE },
-			&LedState{ Color: Color_PURPLE },
-			&LedState{ Color: Color_PURPLE },
-			&LedState{ Color: Color_BLUE },
-			&LedState{ Color: Color_RED },
-			&LedState{ Color: Color_RED },
-			&LedState{ Color: Color_RED },
-			&LedState{ Color: Color_RED },
-			&LedState{ Color: Color_RED },
-			&LedState{ Color: Color_RED },
-			&LedState{ Color: Color_RED },
-			&LedState{ Color: Color_RED },
-			&LedState{ Color: Color_RED },
-			&LedState{ Color: Color_RED },
-			&LedState{ Color: Color_GREEN } }
+  // 45 LEDs. Go Blue
+  leds :=	[]*LedState{ }
+  for i := 0; i < 45; i++ {
+    leds = append(leds, &LedState{ Color: Color_BLUE })
+  }
   data, err := encode(leds)
 	if err != nil {
 
