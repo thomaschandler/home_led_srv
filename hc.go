@@ -40,7 +40,8 @@ func hc_main(writeChannel chan []byte) {
 		})
 
 		ac.Lightbulb.Hue.OnValueRemoteUpdate(func(hue float64) {
-			log.Println("Hue %q", hue)
+			log.Println("Hue ", hue)
+      LedsOnWithHue(writeChannel, uint32(hue))
 		})
  
     t.Start()
