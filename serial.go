@@ -33,32 +33,3 @@ func serial_init() (chan []byte, error) {
       }()
       return writeChannel, nil
 }
-
-// https://godoc.org/github.com/tarm/serial
-func serial_write(data []byte) {
-/*
-      // Wait for startup to complete
-      // TODO: Check returned data
-			buf := make([]byte, 128)
-      n, err := s.Read(buf)
-      if err != nil {
-              log.Fatal(err)
-      }
-      log.Print("%q", buf[:n])
-
-       n, err = s.Write(data)
-        if err != nil {
-              log.Fatal(err)
-        }
-        if n == 0 {
-              log.Fatal("No bytes written")
-        }
-
-      // Read to stop the arduino from resetting
-      n, err = s.Read(buf)
-      if err != nil {
-              log.Fatal(err)
-      }
-      log.Print("%q", buf[:n])
-*/
-}

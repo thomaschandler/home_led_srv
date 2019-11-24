@@ -12,37 +12,37 @@ func hc_main(writeChannel chan []byte) {
     // create an accessory
     info := accessory.Info{Name: "LED strip"}
     ac := accessory.NewLightbulb(info)
-    
+
     // configure the ip transport
     config := hc.Config{Pin: "00102003"}
     t, err := hc.NewIPTransport(config, ac.Accessory)
     if err != nil {
         log.Panic(err)
     }
-    
+
     hc.OnTermination(func(){
         <-t.Stop()
     })
 
-		ac.Lightbulb.On.OnValueRemoteUpdate(func(on bool) {
-		    if on == true {
-		        log.Println("Switch is on")
-						LedsOn(writeChannel);
-		    } else {
-		        log.Println("Switch is off")
-						LedsOff(writeChannel);
-		    }
-		})
+    ac.Lightbulb.On.OnValueRemoteUpdate(func(on bool) {
+        if on == true {
+            log.Println("Switch is on")
+            LedsOn(writeChannel);
+        } else {
+            log.Println("Switch is off")
+            LedsOff(writeChannel);
+        }
+    })
 
-		ac.Lightbulb.Brightness.OnValueRemoteUpdate(func(brightness int) {
-			log.Println("Brightness %q", brightness)
-			LedsSetBrightness(writeChannel, uint32(brightness))
-		})
+    ac.Lightbulb.Brightness.OnValueRemoteUpdate(func(brightness int) {
+      log.Println("Brightness %q", brightness)
+      LedsSetBrightness(writeChannel, uint32(brightness))
+    })
 
-		ac.Lightbulb.Hue.OnValueRemoteUpdate(func(hue float64) {
-			log.Println("Hue ", hue)
+    ac.Lightbulb.Hue.OnValueRemoteUpdate(func(hue float64) {
+      log.Println("Hue ", hue)
       LedsOnWithHue(writeChannel, uint32(hue))
-		})
- 
+    })
+
     t.Start()
 }
