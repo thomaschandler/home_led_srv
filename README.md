@@ -19,7 +19,7 @@ go get github.com/brutella/hc
 go get github.com/brutella/hc/accessory
 ```
 
-## For Linksys Router
+## For OpenWRT Based Router
 
 ```
 env GOOS=linux GOARCH=arm GOARM=7 go build
@@ -36,4 +36,6 @@ opkg update && opkg install kmod-usb-acm
 
 Exit SSH session
 
-[source](https://www.thepolyglotdeveloper.com/2017/04/cross-compiling-golang-applications-raspberry-pi/)
+# References
+
+- [GOOS, GOARCH, GOARM](https://www.thepolyglotdeveloper.com/2017/04/cross-compiling-golang-applications-raspberry-pi/)

@@ -40,6 +40,7 @@ func LedsOnWithHue(writeChannel chan []byte, hue uint32) {
   // 45 LEDs with custom Hue
 
   // Scale from [0,359] to [0,255]
+  // See https://github.com/FastLED/FastLED/wiki/FastLED-HSV-Colors
   fastLedHue := uint32(math.Floor((float64(hue)/360.0) * 255))
 
   leds := []*LedState{ }
